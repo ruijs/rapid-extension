@@ -20,6 +20,7 @@ export default {
         "@ruiapp/move-style",
         "@ruiapp/react-renderer",
         "antd",
+        "axios",
         "dayjs",
         "lodash",
         "react",

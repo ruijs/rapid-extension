@@ -1,6 +1,6 @@
 {
   "name": "@ruiapp/rapid-extension",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/mod.js",
   "scripts": {
@@ -30,13 +30,14 @@
   "peerDependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.23.6",
+    "axios": "^1.1.2",
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@ruiapp/move-style": "^0.0.1",
-    "@ruiapp/react-renderer": "^0.0.1"
+    "@ruiapp/move-style": "^0.0.2",
+    "@ruiapp/react-renderer": "^0.0.2"
   }
 }

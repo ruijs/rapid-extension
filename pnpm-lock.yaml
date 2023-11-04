@@ -6,11 +6,14 @@ settings:
 
 dependencies:
   '@ruiapp/move-style':
-    specifier: ^0.0.1
-    version: 0.0.1(lodash@4.17.21)
+    specifier: ^0.0.2
+    version: 0.0.2(lodash@4.17.21)
   '@ruiapp/react-renderer':
     specifier: ^0.0.1
     version: 0.0.1(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
+  axios:
+    specifier: ^1.1.2
+    version: 1.6.0
 
 devDependencies:
   '@ant-design/icons':
@@ -134,6 +137,19 @@ packages:
 
   /@ruiapp/move-style@0.0.1(lodash@4.17.21):
     resolution: {integrity: sha512-v15TnTgpJ7o+SX6FxyLDeVeFQURnJ6FGxKgMQNuJMpz4BeO2Jd6ClcZsO4tjctTCCdEn3CmgjpM+P8chu5a6mA==}
+    peerDependencies:
+      lodash: ^4.17.21
+    dependencies:
+      axios: 1.6.0
+      events: 3.3.0
+      lodash: 4.17.21
+      qs: 6.11.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /@ruiapp/move-style@0.0.2(lodash@4.17.21):
+    resolution: {integrity: sha512-JzHYqOCKse1E2HNBeHnKZ+rZSujZhzyi0a4DHDW0hs5j29LWGmScjnLoMqUDd4XRld0GPLPlkU2rKZAzgFe88g==}
     peerDependencies:
       lodash: ^4.17.21
     dependencies:
