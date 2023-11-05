@@ -39,6 +39,11 @@ export interface SonicToolbarSelectEntityButtonConfig extends Omit<RapidToolbarB
    */
   extraProperties?: string[];
 
+  /**
+   * 对话框属性
+   */
+  modalProps?: any;
+
   columns: RapidTableColumnConfig[];
 
   onSelected?: RockEventHandlerConfig;

@@ -39,6 +39,7 @@ export default {
       $type: "antdModal",
       $id: `${props.$id}-modal`,
       title: `选择${entityName}`,
+      ...props.modalProps,
       $exps: {
         open: "!!$scope.vars['modal-selectEntity-open']",
       },
@@ -56,7 +57,7 @@ export default {
               field: 'id',
             },
           ],
-          pageSize: props.pageSize || -1,
+          pageSize: props.pageSize,
           columns: props.columns || [
             {
               type: 'auto',
