@@ -3,7 +3,7 @@ import RapidToolbarFormItemMeta from "./SonicToolbarFormItemMeta";
 import { renderRock } from "@ruiapp/react-renderer";
 import type { SonicToolbarFormItemRockConfig } from "./sonic-toolbar-form-item-types";
 import { RapidFormItemRockConfig } from "../rapid-form-item/rapid-form-item-types";
-import { SearchFormFilterConfiguration } from "../../rapid-entity-types";
+import { SearchFormFilterConfiguration } from "../../types/rapid-entity-types";
 
 
 export default {

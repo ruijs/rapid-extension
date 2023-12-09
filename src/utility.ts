@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { RapidFieldType } from "./rapid-entity-types";
+import { RapidFieldType } from "./types/rapid-entity-types";
 
 export const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   text: "rapidTextRenderer",
@@ -14,6 +14,7 @@ export const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   datetimetz: "rapidDateTimeRenderer",
   option: "rapidReferenceRenderer",
   relation: "rapidObjectRenderer",
+  "relation[]": "rapidObjectRenderer",
   json: "rapidJsonRenderer",
 }
 

@@ -58,6 +58,16 @@ export default {
             },
           ],
           pageSize: props.pageSize,
+          extraActions: props.extraActions || ((props.quickSearchMode || props.quickSearchFields) ? [
+            {
+              $type: "sonicToolbarFormItem",
+              formItemType: "search",
+              placeholder: "Search",
+              actionEventName: "onSearch",
+              filterMode: props.quickSearchMode || "contains",
+              filterFields: props.quickSearchFields || ["name"],
+            }
+          ] : null),
           columns: props.columns || [
             {
               type: 'auto',

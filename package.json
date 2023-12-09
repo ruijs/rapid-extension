@@ -1,6 +1,6 @@
 {
   "name": "@ruiapp/rapid-extension",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/mod.js",
   "scripts": {
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@ruiapp/move-style": "^0.0.2",
-    "@ruiapp/react-renderer": "^0.0.2"
+    "@ruiapp/react-renderer": "^0.0.2",
+    "pluralize": "^8.0.0"
   }
 }

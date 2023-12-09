@@ -1,5 +1,5 @@
 import { RockConfig, SimpleRockConfig } from "@ruiapp/move-style";
-import { RapidDataDictionaryEntry } from "../../rapid-entity-types";
+import { RapidDataDictionaryEntry } from "../../types/rapid-entity-types";
 
 export type RapidDictionaryEntryRendererConfig = {
   value?: RapidDataDictionaryEntry;

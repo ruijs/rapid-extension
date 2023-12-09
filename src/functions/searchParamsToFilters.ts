@@ -1,6 +1,6 @@
 import type { FunctionMeta } from "@ruiapp/move-style";
 import { isNull, isUndefined, map } from "lodash";
-import { SearchFormFilterConfiguration } from "../rapid-entity-types";
+import { SearchFormFilterConfiguration } from "../types/rapid-entity-types";
 
 
 export const searchParamsToFilters = (filterConfigurations: SearchFormFilterConfiguration[], searchParams: Record<string, any>) => {

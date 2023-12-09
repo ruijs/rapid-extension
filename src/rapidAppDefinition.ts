@@ -1,8 +1,8 @@
-import { SdRpdDataDictionary, SdRpdEntity } from "./rapid-app-def-types";
+import type { RapidDataDictionary, RapidEntity } from "./types/rapid-entity-types";
 
 export interface AppDefinition {
-  entities: SdRpdEntity[],
-  dataDictionaries: SdRpdDataDictionary[],
+  entities: RapidEntity[],
+  dataDictionaries: RapidDataDictionary[],
 }
 let appDef: AppDefinition;
 

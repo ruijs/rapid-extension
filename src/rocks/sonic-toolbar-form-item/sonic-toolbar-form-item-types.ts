@@ -1,5 +1,5 @@
 import type { RockConfig, SimpleRockConfig } from "@ruiapp/move-style";
-import { RapidActionBase } from "../../rapid-action-types";
+import { RapidActionBase } from "../../types/rapid-action-types";
 import { RapidFormItemType, RapidSearchFormItemConfig } from "../rapid-form-item/rapid-form-item-types";
 
 export type SonicToolbarFormItemConfig = RapidActionBase & RapidSearchFormItemConfig & {

@@ -1,5 +1,5 @@
 import type { SimpleRockConfig } from "@ruiapp/move-style";
-import { RapidActionButtonBase } from "../../rapid-action-types";
+import { RapidActionButtonBase } from "../../types/rapid-action-types";
 
 export interface RapidToolbarButtonConfig extends RapidActionButtonBase {
 }

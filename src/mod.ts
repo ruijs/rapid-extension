@@ -13,6 +13,7 @@ export default {
 
 export { default as rapidAppDefinition } from "./rapidAppDefinition";
 
+export { autoConfigureRapidEntity } from "./RapidEntityAutoConfigure";
 export * from "./utility";
 
 export * from "./rapid-types";

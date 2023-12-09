@@ -1,3 +1,3 @@
-export * from "./rapid-entity-types";
-export * from "./rapid-action-types";
-export * from "./rapid-app-def-types";
+export * from "./types/rapid-entity-types";
+export * from "./types/rapid-page-types";
+export * from "./types/rapid-action-types";

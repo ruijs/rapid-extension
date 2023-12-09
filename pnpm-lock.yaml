@@ -9,11 +9,14 @@ dependencies:
     specifier: ^0.0.2
     version: 0.0.2(lodash@4.17.21)
   '@ruiapp/react-renderer':
-    specifier: ^0.0.1
-    version: 0.0.1(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.0.2
+    version: 0.0.2(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
   axios:
     specifier: ^1.1.2
     version: 1.6.0
+  pluralize:
+    specifier: ^8.0.0
+    version: 8.0.0
 
 devDependencies:
   '@ant-design/icons':
@@ -135,19 +138,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@ruiapp/move-style@0.0.1(lodash@4.17.21):
-    resolution: {integrity: sha512-v15TnTgpJ7o+SX6FxyLDeVeFQURnJ6FGxKgMQNuJMpz4BeO2Jd6ClcZsO4tjctTCCdEn3CmgjpM+P8chu5a6mA==}
-    peerDependencies:
-      lodash: ^4.17.21
-    dependencies:
-      axios: 1.6.0
-      events: 3.3.0
-      lodash: 4.17.21
-      qs: 6.11.2
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /@ruiapp/move-style@0.0.2(lodash@4.17.21):
     resolution: {integrity: sha512-JzHYqOCKse1E2HNBeHnKZ+rZSujZhzyi0a4DHDW0hs5j29LWGmScjnLoMqUDd4XRld0GPLPlkU2rKZAzgFe88g==}
     peerDependencies:
@@ -161,13 +151,13 @@ packages:
       - debug
     dev: false
 
-  /@ruiapp/react-renderer@0.0.1(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-bkOD10cE5V1jCcd0MJdsVcqaOCyH8O77qzQyOzmPi/5SC9yvU1tyApocDm1/QQS+bPWt9ij3yqW8kcvXeLhrpQ==}
+  /@ruiapp/react-renderer@0.0.2(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-f4dyfKp9y99yvUAY7hKD/ZQsZVMAW3ILKF4exbaQjoyw/jEyyo1pQ3W0WVOGnSsVRFLEgOLjbcySxcaOeM6DQw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@ruiapp/move-style': 0.0.1(lodash@4.17.21)
+      '@ruiapp/move-style': 0.0.2(lodash@4.17.21)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -610,6 +600,11 @@ packages:
     dependencies:
       find-up: 4.1.0
     dev: true
+
+  /pluralize@8.0.0:
+    resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
+    engines: {node: '>=4'}
+    dev: false
 
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}

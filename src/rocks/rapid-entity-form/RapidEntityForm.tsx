@@ -1,20 +1,20 @@
-import type { RockEvent, Rock, RockEventHandler, FieldValueType } from "@ruiapp/move-style";
+import type { RockEvent, Rock, RockEventHandler } from "@ruiapp/move-style";
 import { handleComponentEvent } from "@ruiapp/move-style";
 import { renderRock } from "@ruiapp/react-renderer";
 import RapidEntityFormMeta from "./RapidEntityFormMeta";
 import type { RapidEntityFormRockConfig } from "./rapid-entity-form-types";
 import { filter, find, map, uniq } from "lodash";
 import rapidAppDefinition from "../../rapidAppDefinition";
-import type { SdRpdDataDictionary, SdRpdEntity, SdRpdField, SdRpdFieldType } from "../../rapid-app-def-types";
-import { generateRockConfigOfError } from "../..//rock-generators/generateRockConfigOfError";
+import type { RapidDataDictionary, RapidEntity, RapidField, RapidFieldType } from "../../types/rapid-entity-types";
+import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
 import type { EntityStoreConfig } from "../../stores/entity-store";
-import { RapidFormItemConfig, RapidFormItemType } from "../rapid-form-item/rapid-form-item-types";
-import { RapidFormRockConfig } from "../rapid-form/rapid-form-types";
-import { RapidReferenceRendererConfig } from "../rapid-reference-renderer/rapid-reference-renderer-types";
-import { RapidSelectConfig } from "../rapid-select/rapid-select-types";
+import type { RapidFormItemConfig, RapidFormItemType } from "../rapid-form-item/rapid-form-item-types";
+import type { RapidFormRockConfig } from "../rapid-form/rapid-form-types";
+import type { RapidReferenceRendererConfig } from "../rapid-reference-renderer/rapid-reference-renderer-types";
+import type { RapidSelectConfig } from "../rapid-select/rapid-select-types";
 
 
-const fieldTypeToFormItemTypeMap: Record<SdRpdFieldType, RapidFormItemType | null> = {
+const fieldTypeToFormItemTypeMap: Record<RapidFieldType, RapidFormItemType | null> = {
   text: 'text',
   boolean: 'switch',
   integer: 'number',
@@ -27,10 +27,11 @@ const fieldTypeToFormItemTypeMap: Record<SdRpdFieldType, RapidFormItemType | nul
   datetimetz: 'datetime',
   option: 'select',
   relation: 'select',
+  'relation[]': 'select',
   json: 'json',
 };
 
-const validationMessagesByFieldType: Partial<Record<SdRpdFieldType, any>> = {
+const validationMessagesByFieldType: Partial<Record<RapidFieldType, any>> = {
   option: {
     // eslint-disable-next-line no-template-curly-in-string
     required: "请选择${label}",
@@ -49,9 +50,9 @@ const defaultValidationMessages = {
 
 export interface GenerateEntityFormItemOption {
   formItemConfig: RapidFormItemConfig;
-  mainEntity: SdRpdEntity;
-  entities: SdRpdEntity[];
-  dataDictionaries: SdRpdDataDictionary[]; 
+  mainEntity: RapidEntity;
+  entities: RapidEntity[];
+  dataDictionaries: RapidDataDictionary[]; 
 }
 
 function generateDataFormItemForOptionProperty(option: GenerateEntityFormItemOption) {
@@ -91,7 +92,7 @@ function generateDataFormItemForOptionProperty(option: GenerateEntityFormItemOpt
   return formItem;
 }
 
-export function generateDataFormItemForRelationProperty(option: GenerateEntityFormItemOption, field: SdRpdField) {
+export function generateDataFormItemForRelationProperty(option: GenerateEntityFormItemOption, field: RapidField) {
   const { formItemConfig } = option;
 
   let listDataSourceCode = formItemConfig.formControlProps?.listDataSourceCode;
@@ -136,7 +137,7 @@ function generateDataFormItem(option: GenerateEntityFormItemOption) {
 
   if (valueFieldType === "option") {
     return generateDataFormItemForOptionProperty(option);
-  } else if (valueFieldType === "relation") {
+  } else if (valueFieldType === "relation" || valueFieldType === "relation[]") {
     return generateDataFormItemForRelationProperty(option, rpdField);
   }
 
@@ -221,7 +222,7 @@ export default {
           return;
         }
 
-        if (rpdField.type === "relation") {
+        if (rpdField.type === "relation" || rpdField.type === "relation[]") {
           let listDataSourceCode = formItemConfig.formControlProps?.listDataSourceCode;
           if (listDataSourceCode) {
             // use specified data store.

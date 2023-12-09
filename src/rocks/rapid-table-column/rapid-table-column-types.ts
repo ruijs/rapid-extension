@@ -1,5 +1,5 @@
 import { RockChildrenConfig, SimpleRockConfig } from "@ruiapp/move-style";
-import { RapidFieldType } from "../../rapid-entity-types";
+import { RapidFieldType } from "../../types/rapid-entity-types";
 
 /**
  * 表格字段列

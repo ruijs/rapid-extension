@@ -5,10 +5,9 @@ import type { RapidEntityListRockConfig, RapidEntityListState } from "./rapid-en
 import { filter, find, forEach, map, set, uniq } from "lodash";
 import rapidAppDefinition from "../../rapidAppDefinition";
 import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
-import type { SdRpdEntity, SdRpdField } from "../../rapid-app-def-types";
-import { RapidToolbarRockConfig } from "../rapid-toolbar/rapid-toolbar-types";
-import { RapidFieldType } from "../../rapid-entity-types";
-import { EntityStore, EntityStoreConfig } from "../../stores/entity-store";
+import type { RapidToolbarRockConfig } from "../rapid-toolbar/rapid-toolbar-types";
+import type { RapidFieldType, RapidEntity, RapidField } from "../../types/rapid-entity-types";
+import type { EntityStore, EntityStoreConfig } from "../../stores/entity-store";
 
 const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   text: "rapidTextRenderer",
@@ -23,6 +22,7 @@ const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   datetimetz: "rapidDateTimeRenderer",
   option: "rapidOptionFieldRenderer",
   relation: "rapidObjectRenderer",
+  "relation[]": "rapidObjectRenderer",
   json: "rapidJsonRenderer",
 };
 
@@ -102,7 +102,7 @@ export default {
   Renderer(context, props, state) {
     const entities = rapidAppDefinition.getEntities();
     const entityCode = props.entityCode;
-    let mainEntity: SdRpdEntity | undefined;
+    let mainEntity: RapidEntity | undefined;
 
     if (entityCode) {
       mainEntity = find(entities, item => item.code === entityCode);
@@ -118,7 +118,7 @@ export default {
     props.columns.forEach((column) => {
       let cell: RockConfig | RockConfig[] | null = null;
 
-      let rpdField: SdRpdField | undefined;
+      let rpdField: RapidField | undefined;
       if (mainEntity) {
         rpdField = find(mainEntity.fields, { code: column.code });
         if (!rpdField) {
@@ -160,7 +160,7 @@ export default {
             fieldTypeRelatedRendererProps = {
               dictionaryCode: rpdField.dataDictionary,
             };
-          } else if (fieldType === "relation" && !column.rendererType) {
+          } else if ((fieldType === "relation" || fieldType === "relation[]") && !column.rendererType) {
             if (rpdField.relation === "many") {
               rendererType = "rapidArrayRenderer";
             } else {

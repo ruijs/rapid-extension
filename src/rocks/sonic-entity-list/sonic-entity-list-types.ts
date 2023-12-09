@@ -6,7 +6,7 @@ export interface SonicEntityListConfig extends RapidEntityListConfig {
   newForm?: RapidEntityFormConfig;
   editForm?: RapidEntityFormConfig;
   stores?: StoreConfig[]
-};
+}
 
 export interface SonicEntityListRockConfig extends SimpleRockConfig, SonicEntityListConfig {
 }

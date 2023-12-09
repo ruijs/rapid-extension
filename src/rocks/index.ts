@@ -21,6 +21,7 @@ import RapidTableColumn from "./rapid-table-column/RapidTableColumn";
 import RapidTable from "./rapid-table/RapidTable";
 import RapidTextRenderer from "./rapid-text-renderer/RapidTextRenderer";
 import RapidToolbarButton from "./rapid-toolbar-button/RapidToolbarButton";
+import RapidToolbarFormModalButton from "./rapid-toolbar-form-modal-button/RapidToolbarFormModalButton";
 import RapidToolbarLink from "./rapid-toolbar-link/RapidToolbarLink";
 import RapidToolbarPageLink from "./rapid-toolbar-page-link/RapidToolbarPageLink";
 import RapidToolbar from "./rapid-toolbar/RapidToolbar";
@@ -60,6 +61,7 @@ export default [
   RapidTextRenderer,
   RapidToolbar,
   RapidToolbarButton,
+  RapidToolbarFormModalButton,
   RapidToolbarLink,
   RapidToolbarPageLink,
   RapidTreeSelect,

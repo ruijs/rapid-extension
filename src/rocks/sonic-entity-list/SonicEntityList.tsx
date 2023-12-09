@@ -6,7 +6,7 @@ import { compact, find, get, omit } from "lodash";
 import type { RapidEntityListConfig, RapidEntityListRockConfig } from "../rapid-entity-list/rapid-entity-list-types";
 import rapidAppDefinition from "../../rapidAppDefinition";
 import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
-import type { SdRpdEntity } from "../../rapid-app-def-types";
+import { RapidEntity } from "../../types/rapid-entity-types";
 
 const DEFAULT_PAGE_SIZE = 10;
 
@@ -40,7 +40,7 @@ export default {
     const entityCode = props.entityCode;
     let entityName = props.entityName;
 
-    let mainEntity: SdRpdEntity | undefined;
+    let mainEntity: RapidEntity | undefined;
     if (entityCode) {
       mainEntity = find(entities, item => item.code === entityCode);
       if (!entityName) {

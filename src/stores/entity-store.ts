@@ -1,12 +1,11 @@
 import { EventEmitter, Framework, HttpRequestOptions, IStore, MoveStyleUtils, Page, Scope, StoreConfigBase, StoreMeta } from "@ruiapp/move-style";
 import { cloneDeep, find, set } from "lodash";
 import rapidAppDefinition from "../rapidAppDefinition";
-import { FindEntityOptions } from "../rapid-entity-types";
-import { SdRpdEntity } from "../rapid-app-def-types";
+import type { FindEntityOptions, RapidEntity } from "../types/rapid-entity-types";
 
 export interface EntityStoreConfig extends StoreConfigBase, FindEntityOptions {
   type: "entityStore",
-  entityModel?: SdRpdEntity;
+  entityModel?: RapidEntity;
   entityCode?: string;
   frozon?: boolean;
   fixedFilters?: FindEntityOptions["filters"];

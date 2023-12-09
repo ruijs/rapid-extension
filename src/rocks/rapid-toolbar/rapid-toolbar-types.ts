@@ -1,6 +1,6 @@
 import type { RockChildrenConfig, RockConfig, SimpleRockConfig } from "@ruiapp/move-style";
 import type { RapidFormItemType, RapidSearchFormItemConfig } from "../rapid-form-item/rapid-form-item-types";
-import { RapidActionBase, RapidActionButton, RapidActionButtonBase } from "../../rapid-action-types";
+import { RapidActionBase, RapidActionButton, RapidActionButtonBase } from "../../types/rapid-action-types";
 
 export type RapidToolbarConfig = {
   items?: RockConfig[];

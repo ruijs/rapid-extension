@@ -1,4 +1,4 @@
-import { RockEventHandlerConfig, RockPropExpressions } from "@ruiapp/move-style";
+import type { RockEventHandlerConfig, RockPropExpressions } from "@ruiapp/move-style";
 
 export type RapidActionBase = {
   code: string;
