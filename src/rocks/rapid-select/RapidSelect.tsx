@@ -2,6 +2,7 @@ import { MoveStyleUtils, Rock } from "@ruiapp/move-style";
 import { Select, SelectProps } from "antd";
 import { RapidSelectConfig } from "./rapid-select-types";
 import { get, isObject, map } from "lodash";
+import { objectMatch } from "../../utils/object-utility";
 
 export default {
   $type: "rapidSelect",
@@ -53,12 +54,28 @@ export default {
       }
     }
 
+    let showSearch = false;
+    let filterOption;
+    if (props.listSearchable || (props.listFilterFields && props.listFilterFields.length)) {
+      let listFilterFields = props.listFilterFields || [];
+      if (!listFilterFields.length) {
+        listFilterFields = [listTextFieldName];
+      }
+
+      showSearch = true,
+      filterOption = (inputValue, option) => {
+        return objectMatch(option, inputValue, listFilterFields);
+      };
+    }
+
     const antdProps: SelectProps<any> = {
       size: props.size,
       placeholder: props.placeholder,
       allowClear: props.allowClear,
       mode: props.mode,
       disabled: props.disabled,
+      showSearch,
+      filterOption,
       value: selectedValue,
       onChange: props.onChange,
       options,

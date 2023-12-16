@@ -52,7 +52,7 @@ export interface RapidTreeSelectConfig  extends SimpleRockConfig {
   /**
    * 搜索时匹配哪些字段
    */
-  listSearchFields?: string[];
+  listFilterFields?: string[];
 
   /**
    * 列表中的上级字段名。通常为`parent.id`或者`parentId`等。

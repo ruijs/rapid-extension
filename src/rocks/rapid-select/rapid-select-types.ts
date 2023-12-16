@@ -57,5 +57,5 @@ export interface RapidSelectConfig  extends SimpleRockConfig {
   /**
    * 搜索时匹配哪些字段
    */
-  listSearchFields?: string[];
+  listFilterFields?: string[];
 }
