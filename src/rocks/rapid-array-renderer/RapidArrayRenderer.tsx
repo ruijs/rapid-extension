@@ -5,10 +5,10 @@ import { map } from "lodash";
 import { renderRock } from "@ruiapp/react-renderer";
 
 export default {
-  $type: "rapidObjectRenderer",
+  $type: "rapidArrayRenderer",
 
   Renderer(context, props: RapidArrayRendererRockConfig) {
-    const { value, format, item, separator, defaultText } = props;
+    const { value, format, item, separator, listContainer, itemContainer, defaultText } = props;
     if (!value) {
       return defaultText || "";
     }
@@ -17,7 +17,9 @@ export default {
       const rockConfig: RockConfig = {
         $id: props.$id,
         $type: "list",
-        item: item,
+        listContainer,
+        itemContainer,
+        item,
         separator: separator || {
           $type: "antdDivider",
           type: "vertical",
