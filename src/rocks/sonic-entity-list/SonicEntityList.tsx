@@ -1,8 +1,8 @@
-import { MoveStyleUtils, type Rock, type RockConfig } from "@ruiapp/move-style";
+import { MoveStyleUtils, RockChildrenConfig, type Rock, type RockConfig } from "@ruiapp/move-style";
 import { renderRock } from "@ruiapp/react-renderer";
 import RapidEntityListMeta from "./SonicEntityListMeta";
 import type { SonicEntityListRockConfig } from "./sonic-entity-list-types";
-import { compact, find, get, omit } from "lodash";
+import { find, get, isArray, omit } from "lodash";
 import type { RapidEntityListConfig, RapidEntityListRockConfig } from "../rapid-entity-list/rapid-entity-list-types";
 import rapidAppDefinition from "../../rapidAppDefinition";
 import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
@@ -173,15 +173,27 @@ export default {
       ],
     } : null;
 
+    const childrenConfig: RockChildrenConfig = [entityListRockConfig];
+    if (newModalRockConfig) {
+      childrenConfig.push(newModalRockConfig);
+    }
+    if (editModalRockConfig) {
+      childrenConfig.push(editModalRockConfig);
+    }
+    const footerRockConfig = props.footer;
+    if (footerRockConfig) {
+      if (isArray(footerRockConfig)) {
+        childrenConfig.push(...footerRockConfig);
+      } else {
+        childrenConfig.push(footerRockConfig);
+      }
+    }
+
     const rockConfig: RockConfig = {
       $id: `${props.$id}-scope`,
       $type: "scope",
       stores: props.stores,
-      children: compact([
-        entityListRockConfig,
-        newModalRockConfig,
-        editModalRockConfig,
-      ]),
+      children: childrenConfig,
       eventSubscriptions: [
         {
           eventName: "onRefreshButtonClick",
