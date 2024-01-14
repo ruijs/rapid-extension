@@ -12,6 +12,7 @@ import RapidFormItem from "./rapid-form-item/RapidFormItem";
 import RapidForm from "./rapid-form/RapidForm";
 import RapidJsonRenderer from "./rapid-json-renderer/RapidJsonRenderer";
 import RapidLinkRenderer from "./rapid-link-renderer/RapidLinkRenderer";
+import RapidNumberRenderer from "./rapid-number-renderer/RapidNumberRenderer";
 import RapidObjectRenderer from "./rapid-object-renderer/RapidObjectRenderer";
 import RapidOptionFieldRenderer from "./rapid-option-field-renderer/RapidOptionFieldRenderer";
 import RapidReferenceRenderer from "./rapid-reference-renderer/RapidReferenceRenderer";
@@ -51,6 +52,7 @@ export default [
   RapidFormItem,
   RapidJsonRenderer,
   RapidLinkRenderer,
+  RapidNumberRenderer,
   RapidObjectRenderer,
   RapidOptionFieldRenderer,
   RapidReferenceRenderer,

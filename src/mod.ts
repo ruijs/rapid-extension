@@ -20,6 +20,7 @@ export * from "./rapid-types";
 export * from "./rocks/rapid-text-renderer/rapid-text-renderer-types";
 export * from "./rocks/rapid-json-renderer/rapid-json-renderer-types";
 export * from "./rocks/rapid-link-renderer/rapid-link-renderer-types";
+export * from "./rocks/rapid-number-renderer/rapid-number-renderer-types";
 export * from "./rocks/rapid-date-picker/rapid-date-picker-types";
 export * from "./rocks/rapid-descriptions-renderer/rapid-descriptions-renderer-types";
 export * from "./rocks/rapid-dictionary-entry-renderer/rapid-dictionary-entry-renderer-types";
