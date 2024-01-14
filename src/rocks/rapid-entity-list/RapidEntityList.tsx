@@ -11,10 +11,10 @@ import type { EntityStore, EntityStoreConfig } from "../../stores/entity-store";
 
 const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   text: "rapidTextRenderer",
-  integer: "rapidTextRenderer", // TODO: should use rapidNumberRenderer
-  long: "rapidTextRenderer",
-  float: "rapidTextRenderer",
-  double: "rapidTextRenderer",
+  integer: "rapidNumberRenderer",
+  long: "rapidNumberRenderer",
+  float: "rapidNumberRenderer",
+  double: "rapidNumberRenderer",
   boolean: "rapidBoolRenderer",
   date: "rapidDateTimeRenderer",
   time: "rapidDateTimeRenderer",
