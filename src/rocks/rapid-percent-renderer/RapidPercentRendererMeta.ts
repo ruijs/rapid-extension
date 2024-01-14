@@ -1,7 +1,7 @@
 import { RockMeta } from "@ruiapp/move-style";
 
 export default {
-  $type: "rapidNumberRenderer",
+  $type: "rapidPercentRenderer",
 
   slots: {
   },
@@ -10,6 +10,11 @@ export default {
     {
       $type: "componentPropPanel",
       setters: [
+        {
+          $type: "textPropSetter",
+          label: "defaultText",
+          propName: "defaultText",
+        },
         {
           $type: "switchPropSetter",
           label: "usingThousandSeparator",

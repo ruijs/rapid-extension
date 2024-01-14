@@ -1,5 +1,6 @@
 import RapidArrayRenderer from "./rapid-array-renderer/RapidArrayRenderer";
 import RapidBoolRenderer from "./rapid-bool-renderer/RapidBoolRenderer";
+import RapidCurrencyRenderer from "./rapid-currency-renderer/RapidCurrencyRenderer";
 import RapidDatePicker from "./rapid-date-picker/RapidDatePicker";
 import RapidDateTimeRenderer from "./rapid-date-time-renderer/RapidDateTimeRenderer";
 import RapidDescriptionsRenderer from "./rapid-descriptions-renderer/RapidDescriptionsRenderer";
@@ -15,6 +16,7 @@ import RapidLinkRenderer from "./rapid-link-renderer/RapidLinkRenderer";
 import RapidNumberRenderer from "./rapid-number-renderer/RapidNumberRenderer";
 import RapidObjectRenderer from "./rapid-object-renderer/RapidObjectRenderer";
 import RapidOptionFieldRenderer from "./rapid-option-field-renderer/RapidOptionFieldRenderer";
+import RapidPercentRenderer from "./rapid-percent-renderer/RapidPercentRenderer";
 import RapidReferenceRenderer from "./rapid-reference-renderer/RapidReferenceRenderer";
 import RapidSelect from "./rapid-select/RapidSelect";
 import RapidTableAction from "./rapid-table-action/RapidTableAction";
@@ -40,6 +42,7 @@ import SonicToolbarSelectEntityButton from "./sonic-toolbar-select-entity-button
 export default [
   RapidArrayRenderer,
   RapidBoolRenderer,
+  RapidCurrencyRenderer,
   RapidDatePicker,
   RapidDateTimeRenderer,
   RapidDescriptionsRenderer,
@@ -55,6 +58,7 @@ export default [
   RapidNumberRenderer,
   RapidObjectRenderer,
   RapidOptionFieldRenderer,
+  RapidPercentRenderer,
   RapidReferenceRenderer,
   RapidSelect,
   RapidTable,
