@@ -2,7 +2,7 @@ import type { Rock, RockChildrenConfig, RockConfig, RockEvent } from "@ruiapp/mo
 import { renderRock, renderRockChildren } from "@ruiapp/react-renderer";
 import RapidEntityListMeta from "./RapidEntityListMeta";
 import type { RapidEntityListRockConfig, RapidEntityListState } from "./rapid-entity-list-types";
-import { filter, find, forEach, map, set, uniq } from "lodash";
+import { filter, find, forEach, map, merge, set, uniq } from "lodash";
 import rapidAppDefinition from "../../rapidAppDefinition";
 import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
 import type { RapidToolbarRockConfig } from "../rapid-toolbar/rapid-toolbar-types";
@@ -26,7 +26,7 @@ const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   json: "rapidJsonRenderer",
 };
 
-const defaultDisplayPropsOfFieldType: Record<string, Record<string, any>> = {
+const defaultCellDisplayPropsOfFieldTypes: Record<string, Record<string, any>> = {
   date: {
     format: "YYYY-MM-DD",
   },
@@ -40,6 +40,9 @@ const defaultDisplayPropsOfFieldType: Record<string, Record<string, any>> = {
     falseText: "否",
     defaultText: "-",
   }
+}
+
+const defaultCellDisplayPropsOfRendererTypes: Record<string, Record<string, any>> = {
 }
 
 export default {
@@ -153,7 +156,8 @@ export default {
       } else if (column.type === "auto") {
         let fieldType = column.fieldType || rpdField?.type || "text";
         let rendererType = column.rendererType || fieldTypeToDisplayRockTypeMap[fieldType] || "rapidTextRenderer";
-        let defaultRendererProps: any = defaultDisplayPropsOfFieldType[fieldType] || {};
+        let defaultCellDisplayPropsOfFieldType: any = defaultCellDisplayPropsOfFieldTypes[fieldType] || {};
+        let defaultCellDisplayPropsOfRendererType: any = defaultCellDisplayPropsOfRendererTypes[fieldType] || {};
         let fieldTypeRelatedRendererProps: any = {};
         if (rpdField) {
           if (fieldType === "option") {
@@ -171,7 +175,8 @@ export default {
 
         cell = {
           $type: rendererType,
-          ...defaultRendererProps,
+          ...defaultCellDisplayPropsOfFieldType,
+          ...defaultCellDisplayPropsOfRendererType,
           ...fieldTypeRelatedRendererProps,
           ...column.rendererProps,
           $exps: {
@@ -282,6 +287,12 @@ export default {
     ];
 
     return renderRockChildren({context, rockChildrenConfig});
+  },
+
+  setCellDisplayDefaultProps(rendererType: string, defaultRendererProps: Record<string, any>) {
+    const originProps = defaultCellDisplayPropsOfRendererTypes[rendererType];
+    const mergedProps = merge({}, originProps, defaultRendererProps);
+    defaultCellDisplayPropsOfRendererTypes[rendererType] = mergedProps;
   },
 
   ...RapidEntityListMeta
