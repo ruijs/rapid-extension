@@ -75,6 +75,7 @@ export type RapidFieldType =
   | 'long'
   | 'float'
   | 'double'
+  | 'decimal'
   | 'date'
   | 'time'
   | 'datetime'

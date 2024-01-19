@@ -15,6 +15,7 @@ const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
   long: "rapidNumberRenderer",
   float: "rapidNumberRenderer",
   double: "rapidNumberRenderer",
+  decimal: "rapidNumberRenderer",
   boolean: "rapidBoolRenderer",
   date: "rapidDateTimeRenderer",
   time: "rapidDateTimeRenderer",
