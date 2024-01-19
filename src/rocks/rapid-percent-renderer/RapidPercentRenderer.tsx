@@ -7,7 +7,7 @@ export default {
   $type: "rapidPercentRenderer",
 
   Renderer(context, props: RapidPercentRendererRockConfig) {
-    const { defaultText, usingThousandSeparator, decimalPlaces, roundingMode, currencyCode } = props;
+    const { defaultText, usingThousandSeparator, decimalPlaces, roundingMode } = props;
     let { value } = props;
     if (isUndefined(value) || isNull(value)) {
       return defaultText || "";

@@ -7,7 +7,7 @@ export default {
   $type: "rapidCurrencyRenderer",
 
   Renderer(context, props: RapidCurrencyRendererRockConfig) {
-    const { defaultText, usingThousandSeparator, decimalPlaces, roundingMode, currencyCode } = props;
+    const { defaultText, conversionCoefficient, usingThousandSeparator, decimalPlaces, roundingMode, currencyCode } = props;
     let { value } = props;
     if (isUndefined(value) || isNull(value)) {
       return defaultText || "";
@@ -16,6 +16,8 @@ export default {
     if (isString(value)) {
       value = parseFloat(value);
     }
+
+    value = value / (conversionCoefficient || 1);
 
     const useGrouping = !!usingThousandSeparator;
 

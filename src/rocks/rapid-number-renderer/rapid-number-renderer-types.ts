@@ -19,4 +19,9 @@ export interface RapidNumberRendererRockConfig extends SimpleRockConfig {
    * 舍入模式
    */
   roundingMode?: "halfExpand" | "floor" | "ceil";
+
+  /**
+   * 单位系数，默认为 1。
+   */
+  conversionCoefficient?: number;
 }
