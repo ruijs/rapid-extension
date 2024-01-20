@@ -6,45 +6,9 @@ import { filter, find, forEach, map, merge, set, uniq } from "lodash";
 import rapidAppDefinition from "../../rapidAppDefinition";
 import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
 import type { RapidToolbarRockConfig } from "../rapid-toolbar/rapid-toolbar-types";
-import type { RapidFieldType, RapidEntity, RapidField } from "../../types/rapid-entity-types";
+import type { RapidEntity, RapidField } from "../../types/rapid-entity-types";
 import type { EntityStore, EntityStoreConfig } from "../../stores/entity-store";
-
-const fieldTypeToDisplayRockTypeMap: Record<RapidFieldType, string> = {
-  text: "rapidTextRenderer",
-  integer: "rapidNumberRenderer",
-  long: "rapidNumberRenderer",
-  float: "rapidNumberRenderer",
-  double: "rapidNumberRenderer",
-  decimal: "rapidNumberRenderer",
-  boolean: "rapidBoolRenderer",
-  date: "rapidDateTimeRenderer",
-  time: "rapidDateTimeRenderer",
-  datetime: "rapidDateTimeRenderer",
-  datetimetz: "rapidDateTimeRenderer",
-  option: "rapidOptionFieldRenderer",
-  relation: "rapidObjectRenderer",
-  "relation[]": "rapidObjectRenderer",
-  json: "rapidJsonRenderer",
-};
-
-const defaultCellDisplayPropsOfFieldTypes: Record<string, Record<string, any>> = {
-  date: {
-    format: "YYYY-MM-DD",
-  },
-
-  datetime: {
-    format: "YYYY-MM-DD HH:mm:ss",
-  },
-
-  boolean: {
-    trueText: "是",
-    falseText: "否",
-    defaultText: "-",
-  }
-}
-
-const defaultCellDisplayPropsOfRendererTypes: Record<string, Record<string, any>> = {
-}
+import RapidExtensionSetting from "../../RapidExtensionSetting";
 
 export default {
   onResolveState(props, state) {
@@ -156,9 +120,8 @@ export default {
         }
       } else if (column.type === "auto") {
         let fieldType = column.fieldType || rpdField?.type || "text";
-        let rendererType = column.rendererType || fieldTypeToDisplayRockTypeMap[fieldType] || "rapidTextRenderer";
-        let defaultCellDisplayPropsOfFieldType: any = defaultCellDisplayPropsOfFieldTypes[fieldType] || {};
-        let defaultCellDisplayPropsOfRendererType: any = defaultCellDisplayPropsOfRendererTypes[fieldType] || {};
+        let rendererType = column.rendererType || RapidExtensionSetting.getDefaultRendererTypeOfFieldType(fieldType);
+        let defaultRendererProps: any = RapidExtensionSetting.getDefaultRendererProps(fieldType, rendererType);
         let fieldTypeRelatedRendererProps: any = {};
         if (rpdField) {
           if (fieldType === "option") {
@@ -176,8 +139,7 @@ export default {
 
         cell = {
           $type: rendererType,
-          ...defaultCellDisplayPropsOfFieldType,
-          ...defaultCellDisplayPropsOfRendererType,
+          ...defaultRendererProps,
           ...fieldTypeRelatedRendererProps,
           ...column.rendererProps,
           $exps: {
@@ -288,12 +250,6 @@ export default {
     ];
 
     return renderRockChildren({context, rockChildrenConfig});
-  },
-
-  setCellDisplayDefaultProps(rendererType: string, defaultRendererProps: Record<string, any>) {
-    const originProps = defaultCellDisplayPropsOfRendererTypes[rendererType];
-    const mergedProps = merge({}, originProps, defaultRendererProps);
-    defaultCellDisplayPropsOfRendererTypes[rendererType] = mergedProps;
   },
 
   ...RapidEntityListMeta

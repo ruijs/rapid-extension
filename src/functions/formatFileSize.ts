@@ -1,5 +1,5 @@
 import type { FunctionMeta } from "@ruiapp/move-style";
-import { formatFileSize } from "../utility";
+import { formatFileSize } from "../utils/format-utility";
 
 export default {
   name: "formatFileSize",

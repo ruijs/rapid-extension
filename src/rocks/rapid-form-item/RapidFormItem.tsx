@@ -2,8 +2,7 @@ import { Rock, RockConfig } from "@ruiapp/move-style";
 import { renderRock } from "@ruiapp/react-renderer";
 import RapidFormItemMeta from "./RapidFormItemMeta";
 import { RapidFormItemRockConfig } from "./rapid-form-item-types";
-import { RapidFieldType } from "../../rapid-types";
-import { defaultDisplayPropsOfFieldType, fieldTypeToDisplayRockTypeMap } from "../../utility";
+import RapidExtensionSetting from "../../RapidExtensionSetting";
 
 const formItemTypeToControlRockTypeMap: Record<string, string> = {
   text: "antdInput",
@@ -78,16 +77,15 @@ export default {
         childRock.mode = "multiple";
       }
     } else {
-      const defaultRendererProps = props.valueFieldType && defaultDisplayPropsOfFieldType[props.valueFieldType];
-      
       let rendererType = props.rendererType;
       if (!rendererType) {
         if (props.multipleValues) {
           rendererType = "rapidArrayRenderer";
         } else {
-          rendererType = (props.valueFieldType && fieldTypeToDisplayRockTypeMap[props.valueFieldType]) || "rapidTextRenderer";
+          rendererType = RapidExtensionSetting.getDefaultRendererTypeOfFieldType(props.valueFieldType);
         }
       }
+      const defaultRendererProps = RapidExtensionSetting.getDefaultRendererProps(props.valueFieldType, rendererType);
 
       childRock = {
         $id: `${props.$id}-display`,

@@ -10,8 +10,8 @@ import { generateRockConfigOfError } from "../../rock-generators/generateRockCon
 import type { EntityStoreConfig } from "../../stores/entity-store";
 import type { RapidFormItemConfig, RapidFormItemType } from "../rapid-form-item/rapid-form-item-types";
 import type { RapidFormRockConfig } from "../rapid-form/rapid-form-types";
-import type { RapidReferenceRendererConfig } from "../rapid-reference-renderer/rapid-reference-renderer-types";
 import type { RapidSelectConfig } from "../rapid-select/rapid-select-types";
+import { RapidOptionFieldRendererConfig } from "../rapid-option-field-renderer/rapid-option-field-renderer-types";
 
 
 const fieldTypeToFormItemTypeMap: Record<RapidFieldType, RapidFormItemType | null> = {
@@ -21,6 +21,7 @@ const fieldTypeToFormItemTypeMap: Record<RapidFieldType, RapidFormItemType | nul
   long: 'number',
   float: 'number',
   double: 'number',
+  decimal: 'number',
   date: 'date',
   time: 'time',
   datetime: 'datetime',
@@ -74,10 +75,8 @@ function generateDataFormItemForOptionProperty(option: GenerateEntityFormItemOpt
     listValueFieldName: "value",
     ...formItemConfig.formControlProps,
   };
-  let rendererProps: RapidReferenceRendererConfig = {
-    list: dataDictionary?.entries || [],
-    textFieldName: "name",
-    valueFieldName: "value",
+  let rendererProps: RapidOptionFieldRendererConfig = {
+    dictionaryCode: dataDictionaryCode,
   }
   let formItem: RapidFormItemConfig = {
     type: formItemConfig.type,

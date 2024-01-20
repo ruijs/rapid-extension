@@ -1,5 +1,5 @@
 import type { FunctionMeta } from "@ruiapp/move-style";
-import { formatDateTime } from "../utility";
+import { formatDateTime } from "../utils/format-utility";
 
 export default {
   name: "formatDateTime",

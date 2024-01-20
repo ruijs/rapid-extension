@@ -4,7 +4,7 @@ import { Descriptions, DescriptionsProps } from "antd";
 import RapidDescriptionsRendererMeta from "./RapidDescriptionsRendererMeta";
 import { RapidDescriptionsRockConfig } from "./rapid-descriptions-renderer-types";
 import { each, get } from "lodash";
-import { defaultDisplayPropsOfFieldType, fieldTypeToDisplayRockTypeMap } from "../../utility";
+import RapidExtensionSetting from "../../RapidExtensionSetting";
 
 export default {
   $type: "rapidDescriptionsRenderer",
@@ -19,8 +19,8 @@ export default {
 
     const itemsConfigs: any[] = [];
     each(props.items, (item) => {
-      const rendererType = item.rendererType || (item.valueFieldType && fieldTypeToDisplayRockTypeMap[item.valueFieldType]) || "rapidTextRenderer";
-      const defaultRendererProps = item.valueFieldType && defaultDisplayPropsOfFieldType[item.valueFieldType];
+      const rendererType = item.rendererType || RapidExtensionSetting.getDefaultRendererTypeOfFieldType(item.valueFieldType);
+      const defaultRendererProps = RapidExtensionSetting.getDefaultRendererProps(item.valueFieldType, rendererType);
 
       const itemDisplayRockConfig: RockConfig = {
         $id: `${props.$id}-${item.code}-display`,

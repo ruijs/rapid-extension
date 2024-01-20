@@ -14,7 +14,9 @@ export default {
 export { default as rapidAppDefinition } from "./rapidAppDefinition";
 
 export { autoConfigureRapidEntity } from "./RapidEntityAutoConfigure";
-export * from "./utility";
+export * from "./utils/format-utility";
+
+export { default as RapidExtensionSetting } from "./RapidExtensionSetting";
 
 export * from "./rapid-types";
 export * from "./rocks/rapid-text-renderer/rapid-text-renderer-types";

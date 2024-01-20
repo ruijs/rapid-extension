@@ -2,7 +2,7 @@ import { MoveStyleUtils, Rock } from "@ruiapp/move-style";
 import RapidFileSizeRendererMeta from "./RapidFileSizeRendererMeta";
 import { RapidFileSizeRendererConfig } from "./rapid-file-size-renderer-types";
 import { isNull, isObject, isUndefined } from "lodash";
-import { formatFileSize } from "../../utility";
+import { formatFileSize } from "../../utils/format-utility";
 
 export default {
   $type: "rapidFileSizeRenderer",
