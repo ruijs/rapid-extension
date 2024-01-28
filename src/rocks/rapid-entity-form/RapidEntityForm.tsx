@@ -343,14 +343,17 @@ export default {
     const rockConfig: RapidFormRockConfig = {
       $id: `${props.$id}-rapidForm`,
       $type: "rapidForm",
+      size: formConfig.size,
+      layout: formConfig.layout,
       column: formConfig.column,
-      items: formItems,
+      colon: formConfig.colon,
       actions: formConfig.actions,
-      dataSourceCode: formConfig.mode === "new" ? null : props.dataSourceCode || "detail",
-      onFinish: formConfig.mode === "view" ? null : formOnFinish,
       defaultFormFields: formConfig.defaultFormFields,
       onFormRefresh: formConfig.onFormRefresh,
       onValuesChange: formConfig.onValuesChange,
+      items: formItems,
+      dataSourceCode: formConfig.mode === "new" ? null : props.dataSourceCode || "detail",
+      onFinish: formConfig.mode === "view" ? null : formOnFinish,
     };
     return renderRock({context, rockConfig});
   },
