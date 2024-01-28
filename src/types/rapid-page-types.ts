@@ -1,4 +1,5 @@
 import type { RockChildrenConfig, RockPageEventSubscriptionConfig, StoreConfig } from "@ruiapp/move-style";
+import { RapidActionPermissionCheck } from "./rapid-assertion-types";
 
 /**
  * Rapid页面
@@ -27,4 +28,6 @@ export type RapidPage = {
   view?: RockChildrenConfig;
 
   eventSubscriptions?: RockPageEventSubscriptionConfig[];
+
+  permissionCheck?: RapidActionPermissionCheck;
 };
