@@ -17,6 +17,12 @@ export type RapidFormItemConfig = {
   valueFieldType?: RapidFieldType;
 
   /**
+   * 获取value的字段名，默认为code。
+   * 例如record为`{"name": "do sth.", "project": {"id":23, name: "RUI"}}`，此时设置`code`为`project`，`fieldName`为`project.name`，单元格将展示`RUI`。
+   */
+  valueFieldName?: string;
+
+  /**
    * 多个值
    */
   multipleValues?: boolean;

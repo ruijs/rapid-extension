@@ -147,6 +147,8 @@ function generateDataFormItem(option: GenerateEntityFormItemOption) {
     label: formItemConfig.label,
     hidden: formItemConfig.hidden,
     valueFieldType,
+    valueFieldName: formItemConfig.valueFieldName,
+    multipleValues: formItemConfig.multipleValues,
     formControlType: formItemConfig.formControlType,
     formControlProps: formItemConfig.formControlProps,
     rendererType: formItemConfig.rendererType,

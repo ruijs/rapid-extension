@@ -100,7 +100,7 @@ export default {
       $id: props.$id,
       $type: "antdFormItem",
       required: props.required,
-      name: props.code?.split("."), // TODO: should `code` be required for a search form item?
+      name: (props.valueFieldName || props.code)?.split("."), // TODO: should `code` be required for a search form item?
       label: props.label,
       hidden: props.hidden,
       valuePropName: inputRockType && valuePropNameOfFormInput[inputRockType] || "value",
