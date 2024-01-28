@@ -3,7 +3,7 @@ import { handleComponentEvent } from "@ruiapp/move-style";
 import { renderRock } from "@ruiapp/react-renderer";
 import RapidEntityFormMeta from "./RapidEntityFormMeta";
 import type { RapidEntityFormRockConfig } from "./rapid-entity-form-types";
-import { filter, find, map, uniq } from "lodash";
+import { filter, find, isUndefined, map, uniq } from "lodash";
 import rapidAppDefinition from "../../rapidAppDefinition";
 import type { RapidDataDictionary, RapidEntity, RapidField, RapidFieldType } from "../../types/rapid-entity-types";
 import { generateRockConfigOfError } from "../../rock-generators/generateRockConfigOfError";
@@ -172,7 +172,7 @@ export default {
     const field = find(mainEntity.fields, { code: formItem.code });
     if (field) {
       // 使用字段名称作为表单项的标签
-      if (!formItem.label) {
+      if (isUndefined(formItem.label)) {
         formItem.label = field?.name;
       }
 
