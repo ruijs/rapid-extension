@@ -17,7 +17,7 @@ export async function saveRapidEntity(eventName: string, framework: Framework, p
     let res;
     const requestData = Object.assign({}, entity, eventHandler.fixedFields);
     if (entityId) {
-      res = await rapidApi.post(`${eventHandler.entityNamespace}/${eventHandler.entityPluralCode}/${entityId}`, requestData);
+      res = await rapidApi.patch(`${eventHandler.entityNamespace}/${eventHandler.entityPluralCode}/${entityId}`, requestData);
     } else {
       res = await rapidApi.post(`${eventHandler.entityNamespace}/${eventHandler.entityPluralCode}`, requestData);
     }
