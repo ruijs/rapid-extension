@@ -1,7 +1,8 @@
-import { MoveStyleUtils, Rock, RockConfig } from "@ruiapp/move-style";
+import { MoveStyleUtils, Rock, RockChildrenConfig, RockConfig } from "@ruiapp/move-style";
 import RapidLinkRendererMeta from "./RapidLinkRendererMeta";
 import { RapidLinkRendererRockConfig } from "./rapid-link-renderer-types";
-import { renderRock } from "@ruiapp/react-renderer";
+import { renderRock, toRenderRockSlot } from "@ruiapp/react-renderer";
+import { isString } from "lodash";
 
 export default {
   $type: "rapidLinkRenderer",
@@ -12,15 +13,25 @@ export default {
       return defaultText || "";
     }
 
+    let childrenConfig: RockChildrenConfig;
+    if (isString(text)) {
+      childrenConfig = {
+        $id: `${props.$id}-text`,
+        $type: "text",
+        text: MoveStyleUtils.fulfillVariablesInString(text, value),
+      };
+    } else {
+      childrenConfig = {
+        ...text,
+        $id: `${props.$id}-text`,
+      };
+    }
+
     const rockConfig: RockConfig = {
       $id: `${props.$id}`,
       $type: "anchor",
       href: MoveStyleUtils.fulfillVariablesInString(url, value),
-      children: {
-        $id: `${props.$id}-text`,
-        $type: "text",
-        text: MoveStyleUtils.fulfillVariablesInString(text, value),
-      },
+      children: childrenConfig,
     };
 
     return renderRock({context, rockConfig});
