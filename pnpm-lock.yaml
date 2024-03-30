@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@ruiapp/move-style':
-    specifier: ^0.0.2
-    version: 0.0.2(lodash@4.17.21)
+    specifier: ^0.0.6
+    version: 0.0.6(lodash@4.17.21)
   '@ruiapp/react-renderer':
-    specifier: ^0.0.2
-    version: 0.0.2(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.0.6
+    version: 0.0.6(@ruiapp/move-style@0.0.6)(react-dom@18.2.0)(react@18.2.0)
   axios:
     specifier: ^1.1.2
     version: 1.6.0
@@ -138,8 +138,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@ruiapp/move-style@0.0.2(lodash@4.17.21):
-    resolution: {integrity: sha512-JzHYqOCKse1E2HNBeHnKZ+rZSujZhzyi0a4DHDW0hs5j29LWGmScjnLoMqUDd4XRld0GPLPlkU2rKZAzgFe88g==}
+  /@ruiapp/move-style@0.0.6(lodash@4.17.21):
+    resolution: {integrity: sha512-KohUNlW/CvotMAfJKmkc/AQYnd9lybUNO39jtb5WUe1xcF6elePJdqoRo8bVNa31ryEKBcl+LjCJ7S/1Ewuajw==}
     peerDependencies:
       lodash: ^4.17.21
     dependencies:
@@ -151,18 +151,16 @@ packages:
       - debug
     dev: false
 
-  /@ruiapp/react-renderer@0.0.2(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-f4dyfKp9y99yvUAY7hKD/ZQsZVMAW3ILKF4exbaQjoyw/jEyyo1pQ3W0WVOGnSsVRFLEgOLjbcySxcaOeM6DQw==}
+  /@ruiapp/react-renderer@0.0.6(@ruiapp/move-style@0.0.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2zLnr4YtrqlEgUIkgJ90R9AFgnwizGigc8/cOLmxmGR/TE0xp/1xUHXa6g+sXOFDto0n/aGksNQAN9w4osobvw==}
     peerDependencies:
+      '@ruiapp/move-style': ^0.0.6
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@ruiapp/move-style': 0.0.2(lodash@4.17.21)
+      '@ruiapp/move-style': 0.0.6(lodash@4.17.21)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    transitivePeerDependencies:
-      - debug
-      - lodash
     dev: false
 
   /@types/lodash@4.14.200:

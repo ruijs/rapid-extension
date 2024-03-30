@@ -13,7 +13,7 @@ export default {
         ...MoveStyleUtils.omitSystemRockConfigFields(column),
         dataIndex: (column.fieldName || column.code).split("."),
         key: column.key || column.fieldName || column.code,
-        render: toRenderRockSlot({context, slot: column.cell, rockType: column.$type, slotName: "cell"}),
+        render: toRenderRockSlot({context, slot: column.cell, rockType: column.$type, slotPropName: "cell"}),
       } as ColumnType<any>;
     });
 
