@@ -132,7 +132,7 @@ export default {
       labelCol: isHorizonLayout ? { span: 8 } : null,
       wrapperCol: isHorizonLayout ? { span: 16} : null,
       layout: props.layout,
-      requireMark: props.requireMark,
+      requiredMark: props.requiredMark,
       initialValues,
       children: [
         {
