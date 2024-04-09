@@ -12,6 +12,8 @@ export type RapidFormConfig = {
    */
   size?: "default" | "middle" | "small";
 
+  requireMark?: boolean | 'optional';
+
   /**
    * 布局模式，默认为`horizontal`
    */
