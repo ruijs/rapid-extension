@@ -66,6 +66,8 @@ export default {
       $type: "antdModal",
       $id: `${props.$id}-newModal`,
       title: `新建${entityName}`,
+      okText: "确定",
+      cancelText: "取消",
       $exps: {
         open: "!!$scope.vars['modal-newEntity-open']",
         confirmLoading: "!!$scope.vars['modal-saving']",
@@ -114,6 +116,8 @@ export default {
       $type: "antdModal",
       $id: `${props.$id}-editModal`,
       title: `修改${entityName}`,
+      okText: "确定",
+      cancelText: "取消",
       $exps: {
         open: "!!$scope.vars['modal-editEntity-open']",
         confirmLoading: "!!$scope.vars['modal-saving']",
