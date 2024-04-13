@@ -23,7 +23,7 @@ export default {
         const values = await form.validateFields();
         form.submit();
       } catch(err) {
-        console.log(err);
+        message.framework.getRockLogger().error(props, `Failed to submit form: ${err.message}`, { error: err });
       }
     } else if (message.name === "validateFields") {
       state.form.validateFields();

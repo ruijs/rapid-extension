@@ -68,6 +68,7 @@ export default {
   },
 
   Renderer(context, props, state) {
+    const { logger } = context;
     const entities = rapidAppDefinition.getEntities();
     const entityCode = props.entityCode;
     let mainEntity: RapidEntity | undefined;
@@ -90,7 +91,7 @@ export default {
       if (mainEntity) {
         rpdField = find(mainEntity.fields, { code: column.code });
         if (!rpdField) {
-          console.warn(`Unknown field code '${column.code}'`);
+          logger.warn(props, `Unknown field code '${column.code}'`);
         }
       }
 
@@ -222,7 +223,7 @@ export default {
           $action: "script",
           script: async (event: RockEvent) => {
             const [ pagination ] = event.args;
-            const store: EntityStore = event.scope.stores[dataSourceCode];
+            const store: EntityStore = event.scope.stores[dataSourceCode] as any;
             // store.setPagination({
             //   limit: props.pageSize,
             //   offset: ((pagination.current || 1) - 1) * props.pageSize

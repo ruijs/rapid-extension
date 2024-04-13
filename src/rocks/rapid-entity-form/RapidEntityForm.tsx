@@ -1,4 +1,4 @@
-import type { RockEvent, Rock, RockEventHandler } from "@ruiapp/move-style";
+import type { RockEvent, Rock, RockEventHandler, RuiRockLogger } from "@ruiapp/move-style";
 import { handleComponentEvent } from "@ruiapp/move-style";
 import { renderRock } from "@ruiapp/react-renderer";
 import RapidEntityFormMeta from "./RapidEntityFormMeta";
@@ -124,12 +124,12 @@ export function generateDataFormItemForRelationProperty(option: GenerateEntityFo
 }
 
 
-function generateDataFormItem(option: GenerateEntityFormItemOption) {
+function generateDataFormItem(logger: RuiRockLogger, entityFormProps: any, option: GenerateEntityFormItemOption) {
   const { formItemConfig, mainEntity } = option;
 
   const rpdField = find(mainEntity.fields, {code: formItemConfig.code})!;
   if (!rpdField) {
-    console.warn(`Field with code '${formItemConfig.code}' not found.`);
+    logger.warn(entityFormProps, `Field with code '${formItemConfig.code}' not found.`);
   }
 
   let valueFieldType = formItemConfig.valueFieldType || rpdField?.type || "text";
@@ -281,6 +281,7 @@ export default {
   },
 
   Renderer(context, props, state) {
+    const { logger } = context;
     const entities = rapidAppDefinition.getEntities();
     const dataDictionaries = rapidAppDefinition.getDataDictionaries();
     const formConfig = props;
@@ -295,7 +296,7 @@ export default {
 
     if (formConfig && formConfig.items) {
       formConfig.items.forEach((formItemConfig) => {
-        const formItem = generateDataFormItem({
+        const formItem = generateDataFormItem(logger, props, {
           formItemConfig,
           mainEntity,
           entities,

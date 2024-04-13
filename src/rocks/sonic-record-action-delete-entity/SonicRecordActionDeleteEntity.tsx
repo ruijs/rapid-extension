@@ -42,10 +42,9 @@ export default {
               title: confirmText,
               onOk: async () => {
                 try {
-                  console.info(event)
                   await rapidApi.delete(`${mainEntity.namespace}/${mainEntity.pluralCode}/${event.sender['data-record-id']}`)
                   message.info("删除成功。");
-                  event.scope.loadStoreData(dataSourceCode);
+                  event.scope.loadStoreData(dataSourceCode, null);
                 } catch (err: any) {
                   message.error(`删除失败：${err.message}`);
                 }

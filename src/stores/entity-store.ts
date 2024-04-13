@@ -1,4 +1,4 @@
-import { EventEmitter, Framework, HttpRequestOptions, IStore, MoveStyleUtils, Page, Scope, StoreConfigBase, StoreMeta } from "@ruiapp/move-style";
+import { EventEmitter, Framework, HttpRequestOptions, IStore, MoveStyleUtils, Page, RuiModuleLogger, Scope, StoreConfigBase, StoreMeta } from "@ruiapp/move-style";
 import { cloneDeep, find, set } from "lodash";
 import rapidAppDefinition from "../rapidAppDefinition";
 import type { FindEntityOptions, RapidEntity } from "../types/rapid-entity-types";
@@ -13,6 +13,7 @@ export interface EntityStoreConfig extends StoreConfigBase, FindEntityOptions {
 
 export class EntityStore implements IStore<EntityStoreConfig> {
   #framework: Framework;
+  #logger: RuiModuleLogger;
   #page: Page;
   #scope: Scope;
   #name: string;
@@ -24,6 +25,7 @@ export class EntityStore implements IStore<EntityStoreConfig> {
   constructor(framework: Framework, page: Page, scope: Scope) {
     this.#emitter = new EventEmitter();
     this.#framework = framework;
+    this.#logger = framework.getLogger("store");
     this.#page = page;
     this.#scope = scope;
     this.#name = "";
@@ -64,7 +66,7 @@ export class EntityStore implements IStore<EntityStoreConfig> {
   }
 
   async loadData(input?: any): Promise<any> {
-    console.debug(`[RapidExtension][EntityStore][${this.name}] EntityStore.loadData()`)
+    this.#logger.debug(`Loading entity store data, name='${this.name}'`);
     if (this.#isLoading) {
       return;
     }
@@ -79,7 +81,7 @@ export class EntityStore implements IStore<EntityStoreConfig> {
     }
 
     if (!entityModel) {
-      console.error("Can not find entity model.")
+      this.#logger.debug(`Can not find entity model of store '${this.name}'`, { storeConfig: this.#config });
       return;
     }
 
@@ -95,7 +97,7 @@ export class EntityStore implements IStore<EntityStoreConfig> {
     if (expressions) {
       for(const propName in expressions) {
         if (propName.startsWith("$")) {
-          console.error(`System field can not bind to an expression. ${propName}=${expressions[propName]}`);
+          this.#logger.error(`System field can not bind to an expression. ${propName}=${expressions[propName]}`);
           continue;
         }
         const interpretedValue = this.#page.interpreteExpression(expressions[propName], {
