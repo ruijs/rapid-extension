@@ -1,0 +1,1 @@
+This repo has been moved to [https://github.com/ruijs/rapid/tree/main/packages/rapid-extension](https://github.com/ruijs/rapid/tree/main/packages/rapid-extension)
